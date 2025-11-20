@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로컬 청년 창업 R&D 코디네이터</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.8;
+        }
+        
+        /* 네비게이션 */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 33, 71, 0.08);
+            z-index: 1000;
+            padding: 20px 0;
+        }
+        
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        nav .logo {
+            font-size: 18px;
+            font-weight: 700;
+            color: #002147;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 35px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: #002147;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+        
+        nav a:hover {
+            color: #FF6B00;
+        }
+        
+        /* 컨테이너 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        /* 섹션 공통 스타일 */
+        section {
+            padding: 120px 0;
+        }
+        
+        .section-title {
+            font-size: 42px;
+            font-weight: 900;
+            color: #002147;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+        
+        .section-subtitle {
+            font-size: 20px;
+            color: #555;
+            text-align: center;
+            margin-bottom: 60px;
+            line-height: 1.8;
+        }
+        
+        /* 히어로 섹션 */
+        .hero {
+            background: linear-gradient(135deg, #002147 0%, #003d7a 100%);
+            color: white;
+            padding: 180px 0 140px;
+            margin-top: 70px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 50%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255, 107, 0, 0.15) 100%);
+        }
+        
+        .hero .container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.3;
+        }
+        
+        .hero .highlight {
+            color: #FF6B00;
+        }
+        
+        .hero p {
+            font-size: 22px;
+            margin-bottom: 20px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .hero .subtitle {
+            font-size: 19px;
+            opacity: 0.85;
+            margin-bottom: 50px;
+        }
+        
+        /* 버튼 */
+        .cta-button {
+            display: inline-block;
+            background: #FF6B00;
+            color: white;
+            padding: 20px 50px;
+            font-size: 18px;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s;
+            box-shadow: 0 10px 30px rgba(255, 107, 0, 0.3);
+        }
+        
+        .cta-button:hover {
+            background: #e65f00;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(255, 107, 0, 0.4);
+        }
+        
+        /* 문제 정의 섹션 */
+        .problem {
+            background: #f8f9fa;
+        }
+        
+        .pain-point {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.08);
+        }
+        
+        .pain-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .pain-item {
+            background: white;
+            padding: 35px;
+            border-radius: 15px;
+            border-left: 5px solid #FF6B00;
+            box-shadow: 0 5px 20px rgba(0, 33, 71, 0.06);
+        }
+        
+        .pain-item h3 {
+            color: #002147;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .pain-item p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* 솔루션 섹션 */
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .solution-card {
+            background: white;
+            padding: 45px 35px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.08);
+            transition: all 0.3s;
+        }
+        
+        .solution-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 33, 71, 0.12);
+        }
+        
+        .solution-card .icon {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+        
+        .solution-card h3 {
+            color: #002147;
+            font-size: 22px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        
+        .solution-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* 혜택 섹션 */
+        .benefits {
+            background: #f8f9fa;
+        }
+        
+        .benefit-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .benefit-card {
+            background: white;
+            padding: 45px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.08);
+        }
+        
+        .benefit-card .emoji {
+            font-size: 56px;
+            margin-bottom: 25px;
+        }
+        
+        .benefit-card h3 {
+            color: #002147;
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .benefit-card p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .benefit-card .badge {
+            display: inline-block;
+            background: #FF6B00;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+        
+        /* 신뢰 섹션 */
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .trust-card {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.08);
+            text-align: center;
+        }
+        
+        .trust-card .icon {
+            font-size: 48px;
+            margin-bottom: 25px;
+        }
+        
+        .trust-card h3 {
+            color: #002147;
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 18px;
+        }
+        
+        .trust-card p {
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        /* 가격 섹션 */
+        .pricing {
+            background: #f8f9fa;
+        }
+        
+        .pricing-table {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 60px;
+        }
+        
+        .pricing-card {
+            background: white;
+            padding: 50px 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 33, 71, 0.08);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .pricing-card.featured {
+            border: 3px solid #FF6B00;
+            transform: scale(1.05);
+        }
+        
+        .pricing-card .popular-badge {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: #FF6B00;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 700;
+        }
+        
+        .pricing-card h3 {
+            color: #002147;
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-card .price {
+            font-size: 20px;
+            color: #FF6B00;
+            font-weight: 700;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+        
+        .pricing-card .benefit-tag {
+            background: #e8f4ff;
+            color: #002147;
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 30px;
+            display: inline-block;
+        }
+        
+        .pricing-card ul {
+            list-style: none;
+            margin-bottom: 30px;
+        }
+        
+        .pricing-card li {
+            padding: 12px 0;
+            color: #555;
+            line-height: 1.8;
+        }
+        
+        .pricing-card li:before {
+            content: "✓ ";
+            color: #FF6B00;
+            font-weight: 700;
+            margin-right: 10px;
+        }
+        
+        .limited-notice {
+            background: linear-gradient(135deg, #FF6B00 0%, #ff8533 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+            font-size: 18px;
+            font-weight: 600;
+        }
+        
+        /* CTA 섹션 */
+        .final-cta {
+            background: linear-gradient(135deg, #002147 0%, #003d7a 100%);
+            color: white;
+            text-align: center;
+        }
+        
+        .final-cta h2 {
+            font-size: 46px;
+            font-weight: 900;
+            margin-bottom: 30px;
+            color: white;
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 50px;
+            line-height: 1.8;
+            opacity: 0.95;
+        }
+        
+        .final-cta .cta-button {
+            font-size: 20px;
+            padding: 24px 60px;
+        }
+        
+        /* 푸터 */
+        footer {
+            background: #002147;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        
+        footer p {
+            opacity: 0.8;
+            line-height: 1.8;
+        }
+        
+        /* 반응형 */
+        @media (max-width: 768px) {
+            nav ul {
+                gap: 15px;
+                font-size: 13px;
+            }
+            
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            section {
+                padding: 80px 0;
+            }
+            
+            .container {
+                padding: 0 20px;
+            }
+            
+            .pricing-card.featured {
+                transform: scale(1);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 네비게이션 -->
+    <nav>
+        <div class="container">
+            <div class="logo">R&D 코디네이터</div>
+            <ul>
+                <li><a href="#problem">문제</a></li>
+                <li><a href="#solution">솔루션</a></li>
+                <li><a href="#benefits">혜택</a></li>
+                <li><a href="#trust">신뢰</a></li>
+                <li><a href="#pricing">가격</a></li>
+                <li><a href="#cta">신청</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 히어로 섹션 -->
+    <section class="hero">
+        <div class="container">
+            <h1>지역 정주 청년 창업팀을 위한<br><span class="highlight">R&D 성장 전략 파트너</span></h1>
+            <p>당신의 전문성을 지역에서 피워낼 성공적인 국책과제 수주 로드맵이 필요하지 않으신가요?</p>
+            <p class="subtitle">로컬 청년 창업 R&D 코디네이터는 지역 정주를 희망하는 청년 기업의 양질의 일자리(R&D, 기획 분야) 부족 문제를 해결하고, 안정적인 초기 성장 동력을 확보하도록 돕습니다. 지금, 초기 기업 성장의 핵심인 '정부 지원 사업' 선정의 문을 여세요.</p>
+            <a href="#cta" class="cta-button">지금 바로 문의하기 →</a>
+        </div>
+    </section>
+
+    <!-- 문제 정의 섹션 -->
+    <section id="problem" class="problem">
+        <div class="container">
+            <h2 class="section-title">😥 수도권 이탈을 고민하게 만드는,<br>지역 청년 창업의 현실</h2>
+            <p class="section-subtitle">우리는 당신의 고민을 정확히 이해합니다. 지역에서 새로운 시작을 꿈꾸는 당신은 뛰어난 전문성과 열정을 가지고 있지만,<br>다음과 같은 현실적인 장벽에 부딪히고 있습니다.</p>
+            
+            <div class="pain-list">
+                <div class="pain-item">
+                    <h3>양질의 기획/R&D 일자리 부족</h3>
+                    <p>수도권 대비 R&D, 기획 등 전문성을 요구하는 양질의 일자리 또는 협력 기회 자체가 부족합니다.</p>
+                </div>
+                <div class="pain-item">
+                    <h3>창업 기반의 불안정성</h3>
+                    <p>가진 기술을 사업화할 초기 자금과 체계적인 성장 로드맵 확보가 어렵습니다.</p>
+                </div>
+                <div class="pain-item">
+                    <h3>전문성 활용의 한계</h3>
+                    <p>당신의 전문성을 활용하고 가치를 인정받을 수 있는 안정적인 직장/창업 기반을 지역 내에서 찾기 힘듭니다.</p>
+                </div>
+            </div>
+            
+            <div class="pain-point">
+                <h3 style="color: #FF6B00; font-size: 24px; margin-bottom: 20px;">📌 핵심 Pain Point</h3>
+                <p style="font-size: 20px; color: #002147; font-weight: 600; line-height: 1.8;">"전문성을 활용하여 지역에 정주하고 싶지만, R&D 자금 확보 및 사업 기획의 노하우 부족으로 초기 성장의 동력이 불안정합니다."</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 솔루션 섹션 -->
+    <section id="solution">
+        <div class="container">
+            <h2 class="section-title">🚀 로컬 청년 창업 R&D 코디네이터:<br>성장을 위한 브릿지</h2>
+            <p class="section-subtitle">당신의 전문성과 지역의 잠재력을 연결하고,<br>정교한 데이터 기반 전략으로 초기 자금 확보를 최적화합니다.</p>
+            
+            <div class="solution-grid">
+                <div class="solution-card">
+                    <div class="icon">🎯</div>
+                    <h3>핵심 가치 제안</h3>
+                    <p>지역 청년 창업팀의 국책과제 수주 및 R&D 전략 설계를 지원하여 정주형 기업 성장 동력 확보</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">🔍</div>
+                    <h3>맞춤형 과제 탐색</h3>
+                    <p>기업별 사업 분야에 가장 적합한 국책과제를 탐색하고, 성공 확률을 극대화하는 R&D 사업계획 방향을 설계합니다</p>
+                </div>
+                <div class="solution-card">
+                    <div class="icon">📊</div>
+                    <h3>데이터 기반 전략</h3>
+                    <p>기업경영 지원 및 데이터 기반 프로세스 최적화 역량을 활용하여, 정교하고 꼼꼼한 심사 대응 전략을 구축합니다</p>
+                </div>
+            </div>
+            
+            <div style="background: #e8f4ff; padding: 50px; border-radius: 20px; margin-top: 60px; text-align: center;">
+                <h3 style="color: #002147; font-size: 26px; font-weight: 700; margin-bottom: 20px;">🎉 결과</h3>
+                <p style="font-size: 19px; color: #333; line-height: 1.8;">사업 초기부터 외부 자금(국책과제)을 확보하여 재정적 안정성을 높이고,<br>지역 내에서 전문성을 갖춘 기업으로 빠르게 자리 잡을 수 있도록 지원합니다.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- 혜택 섹션 -->
+    <section id="benefits" class="benefits">
+        <div class="container">
+            <h2 class="section-title">✨ 당신이 얻게 될 3가지 핵심 성장 동력</h2>
+            
+            <div class="benefit-cards">
+                <div class="benefit-card">
+                    <div class="emoji">💰</div>
+                    <h3>정부 R&D 자금 확보 최적화</h3>
+                    <p>매년 수백 개의 공고 중 당신의 비즈니스 모델에 100% 부합하는 과제를 찾아드립니다.</p>
+                    <span class="badge">성공 보수 기반 컨설팅료</span>
+                </div>
+                <div class="benefit-card">
+                    <div class="emoji">📈</div>
+                    <h3>체계적인 사업 성장 로드맵</h3>
+                    <p>단기적인 과제 수주를 넘어, 3년/5년 후를 대비하는 R&D 기술 및 경영 지원 로드맵을 설계하여 안정적인 정주 기반을 구축합니다.</p>
+                </div>
+                <div class="benefit-card">
+                    <div class="emoji">🤝</div>
+                    <h3>지역 내 전문 인력 네트워크 강화</h3>
+                    <p>커뮤니티형 맛집 탐방 등 지역 인적/공간 자원을 활용한 네트워킹을 통해 협력 기회와 멘토링을 제공합니다.</p>
+                    <span class="badge">정기 유료 교육/멘토링</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 신뢰 섹션 -->
+    <section id="trust">
+        <div class="container">
+            <h2 class="section-title">💡 검증된 전략과 공신력 있는 파트너십</h2>
+            <p class="section-subtitle">우리는 '최소 실행 가능 제품(MVP)'을 통해<br>당신과 같은 초기 창업팀의 니즈를 이미 확인하고 검증했습니다.</p>
+            
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <div class="icon">✅</div>
+                    <h3>MVP 파일럿 운영</h3>
+                    <p>로컬 창업예정 및 창업 준비 중인 청년을 대상으로 소규모 파일럿 R&D 코디네이팅을 진행하여 시장 초기 수용도 및 핵심 니즈를 파악했습니다.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">🏢</div>
+                    <h3>R&D과제 지원센터 협력</h3>
+                    <p>지역 내 R&D과제 지원센터와 협력하여 최신 공고 정보 및 행정 절차 연계 지원을 제공합니다.</p>
+                </div>
+                <div class="trust-card">
+                    <div class="icon">🎓</div>
+                    <h3>대학교 창업 보육센터 연계</h3>
+                    <p>지역 대학교 창업 보육센터와의 협력으로 예비/초기 창업자 잠재 고객 유입 및 전문 멘토링을 연계합니다.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 가격 섹션 -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">🎁 초기 MVP 고객 특별 혜택</h2>
+            <p class="section-subtitle">정부 국책과제 수주는 초기 기업 성장의 황금 열쇠입니다.<br>초기 고객 모집을 위해 한정된 팀에게만 파격적인 조건을 제공합니다.</p>
+            
+            <div class="pricing-table">
+                <div class="pricing-card featured">
+                    <div class="popular-badge">인기</div>
+                    <h3>R&D 초기 전략 컨설팅</h3>
+                    <div class="price">100% 성공 보수 기반<br>+ 초기 착수금 50% 할인</div>
+                    <div class="benefit-tag">초기 재정 부담 최소화 (리스크 제로)</div>
+                    <ul>
+                        <li>국책과제 1회 수주 목표</li>
+                        <li>기업 맞춤형 과제 탐색</li>
+                        <li>사업계획서 전략 설계</li>
+                        <li>심사 대응 전략 컨설팅</li>
+                        <li>선정 시까지 지속 지원</li>
+                    </ul>
+                    <a href="#cta" class="cta-button">지금 신청하기</a>
+                </div>
+                
+                <div class="pricing-card">
+                    <h3>청년 창업 멘토링</h3>
+                    <div class="price">선착순 5팀 한정<br>30% 할인 제공</div>
+                    <div class="benefit-tag">지속 가능한 성장 교육</div>
+                    <ul>
+                        <li>3개월 정기 멘토링</li>
+                        <li>R&D 전략 교육</li>
+                        <li>성장 로드맵 설계</li>
+                        <li>지역 네트워크 연계</li>
+                        <li>1:1 맞춤형 코칭</li>
+                    </ul>
+                    <a href="#cta" class="cta-button">지금 신청하기</a>
+                </div>
+            </div>
+            
+            <div class="limited-notice">
+                🔥 선착순 5팀 마감 시 본 프로모션은 종료되며, 다음 기수부터는 일반 컨설팅 및 교육료가 적용됩니다.
+            </div>
+        </div>
+    </section>
+
+    <!-- 최종 CTA 섹션 -->
+    <section id="cta" class="final-cta">
+        <div class="container">
+            <h2>당신의 전문성이<br>지역 경제를 상승시키는 핵심 동력이 됩니다</h2>
+            <p>지역에서 전문성을 발휘하며 안정적으로 정주하려는 당신의 비전은 더 이상 꿈이 아닙니다.<br>로컬 청년 창업 R&D 코디네이터와 함께라면, 정교한 R&D 전략을 바탕으로<br>초기 기업 성장의 가장 큰 난관을 극복할 수 있습니다.</p>
+            <p style="font-size: 24px; font-weight: 700; margin-bottom: 40px;">안정적인 정주와 전문적인 성장의 첫걸음, 지금 바로 시작하세요.</p>
+            <a href="#contact" class="cta-button" onclick="alert('문의 폼으로 이동합니다. 실제 서비스에서는 문의 페이지나 상담 예약 시스템으로 연결됩니
